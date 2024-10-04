@@ -79,9 +79,11 @@ public class AetherMusicHandler {
 		if (category == SoundCategory.MUSIC) {
 			if (this.mc.thePlayer != null && this.mc.thePlayer.dimension == AetherConfig.getAetherDimensionID()) {
 				if (!sound.getPositionedSoundLocation().toString().contains("aether_legacy") && (this.musicTicker.playingMusic() || !this.musicTicker.playingMusic())) {
-					event.result = null;
+					if (AetherConfig.config.get("Misc", "Toggles the music in the Aether. Disable this if you use another mod that adds custom music (like MusicChoices)", true).getBoolean()) {
+						event.result = null;
 
-					return;
+						return;
+					}
 				}
 			}
 			if (sound.getPositionedSoundLocation().toString().equals("minecraft:music.menu"))
