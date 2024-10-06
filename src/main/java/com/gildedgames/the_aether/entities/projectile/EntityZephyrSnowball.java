@@ -28,6 +28,12 @@ public class EntityZephyrSnowball extends EntityProjectileBase {
 		super.onUpdate();
 
 		this.worldObj.spawnParticle("smoke", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+
+		if (this.ticksInAir > 150) {
+			this.setDead();
+		} else {
+			this.ticksInAir++;
+		}
 	}
 
 	@Override
