@@ -72,7 +72,7 @@ public class EntitySentry extends EntityLiving implements IMob {
 		super.onUpdate();
 
 		if (this.onGround && !flag) {
-			this.worldObj.playSoundAtEntity(this, "mob.slime", getSoundVolume(), ((rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+			this.worldObj.playSoundAtEntity(this, "mob.slime.small", getSoundVolume(), ((rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
 		} else if (!this.onGround && flag && this.getAttackTarget() != null) {
 			this.motionX *= 3D;
 			this.motionZ *= 3D;
@@ -191,7 +191,7 @@ public class EntitySentry extends EntityLiving implements IMob {
 				this.moveForward = 1.0F;
 			}
 
-			this.playSound("mob.slime", getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+			this.playSound("mob.slime.small", getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) * 0.8F);
 		} else {
 			this.isJumping = false;
 
@@ -217,12 +217,12 @@ public class EntitySentry extends EntityLiving implements IMob {
 
 	@Override
 	protected String getHurtSound() {
-		return "mob.slime";
+		return "mob.slime.small";
 	}
 
 	@Override
 	protected String getDeathSound() {
-		return "mob.slime";
+		return "mob.slime.small";
 	}
 
 	@Override
