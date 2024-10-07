@@ -753,7 +753,7 @@ public class EntitySlider extends EntityFlying implements IAetherBoss {
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.slider.name");
     }
     else {
-        return this.StatCollector.translateToLocal("title.aether_legacy.slider.name");
+        return StatCollector.translateToLocal("title.aether_legacy.slider.name");
     }
     }
 
