@@ -33,13 +33,15 @@ public class AetherConfig {
 
 	private static boolean aether_start;
 
+	private static boolean book_of_lore;
+
+	private static boolean golden_parachute;
+
 	private static boolean disable_eternal_day;
 
 	private static boolean toggle_music;
 
 	private static boolean boss_names;
-
-	private static boolean starting_equipment;
 
 	private static int phyg_spawnrate, flyingcow_spawnrate, sheepuff_spawnrate, aerbunny_spawnrate, moa_spawnrate, aerwhale_spawnrate;
 
@@ -77,7 +79,9 @@ public class AetherConfig {
 
 		aether_start = config.get("Gameplay", "Spawns Player with Aether Portal Frame", false).getBoolean(false);
 
-		starting_equipment = config.get("Misc", "Gives the Player a Book of Lore and Golden Parachute upon entering the Aether for the first time", true).getBoolean(true);
+		book_of_lore = config.get("Misc", "Gives the Player a Book of Lore upon entering the Aether for the first time", true).getBoolean(true);
+
+		book_of_lore = config.get("Misc", "Gives the Player a Golden Parachute upon entering the Aether for the first time", true).getBoolean(true);
 
 		max_life_shards = config.get("Gameplay", "Max Life Shards", 10).getInt(10);
 
