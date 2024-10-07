@@ -78,9 +78,7 @@ public class AetherConfig {
 		old_mobs = config.get("Misc", "Enable Legacy Visuals", false).getBoolean(false);
 
 		aether_start = config.get("Gameplay", "Spawns Player with Aether Portal Frame", false).getBoolean(false);
-
 		book_of_lore = config.get("Misc", "Gives the Player a Book of Lore upon entering the Aether for the first time", true).getBoolean(true);
-
 		book_of_lore = config.get("Misc", "Gives the Player a Golden Parachute upon entering the Aether for the first time", true).getBoolean(true);
 
 		max_life_shards = config.get("Gameplay", "Max Life Shards", 10).getInt(10);
