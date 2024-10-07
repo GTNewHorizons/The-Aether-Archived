@@ -351,7 +351,13 @@ public class EntityValkyrieQueen extends EntityBossMob implements IAetherBoss {
         nbttagcompound.setInteger("DungeonZ", this.dungeonZ);
         nbttagcompound.setInteger("DungeonEntranceZ", this.dungeonEntranceZ);
         nbttagcompound.setTag("SafePos", newDoubleNBTList(new double[]{this.safeX, this.safeY, this.safeZ}));
-        nbttagcompound.setString("BossName", this.getName());
+        
+        if (AetherConfig.config.get("Misc", "Enables randomly generated boss names", true).getBoolean()) {
+            nbttagcompound.setString(this.getName());
+        }
+        else {
+            nbttagcompound.setString("BossName", this.getName());
+        }
     }
 
     @Override
