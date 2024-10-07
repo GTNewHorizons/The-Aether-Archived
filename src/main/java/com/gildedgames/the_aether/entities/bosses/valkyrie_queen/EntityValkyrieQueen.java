@@ -351,13 +351,7 @@ public class EntityValkyrieQueen extends EntityBossMob implements IAetherBoss {
         nbttagcompound.setInteger("DungeonZ", this.dungeonZ);
         nbttagcompound.setInteger("DungeonEntranceZ", this.dungeonEntranceZ);
         nbttagcompound.setTag("SafePos", newDoubleNBTList(new double[]{this.safeX, this.safeY, this.safeZ}));
-        
-        if (AetherConfig.config.get("Misc", "Enables randomly generated boss names", true).getBoolean()) {
-            nbttagcompound.setString(this.getName());
-        }
-        else {
-            nbttagcompound.setString("BossName", this.getName());
-        }
+        nbttagcompound.setString("BossName", this.getName());
     }
 
     @Override
@@ -599,7 +593,12 @@ public class EntityValkyrieQueen extends EntityBossMob implements IAetherBoss {
 
     @Override
     public String getBossName() {
+    if (AetherConfig.config.get("Misc", "Enables randomly generated boss names", true).getBoolean()) {
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
+    }
+    else {
+        return this.StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
+    }
     }
 
     public void setBossName(String name) {
