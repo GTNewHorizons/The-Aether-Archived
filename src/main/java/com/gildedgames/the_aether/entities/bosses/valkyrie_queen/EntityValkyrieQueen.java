@@ -598,7 +598,7 @@ public class EntityValkyrieQueen extends EntityBossMob implements IAetherBoss {
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
     }
     else {
-        return this.translateToLocal("title.aether_legacy.valkyrie_queen.name");
+        return StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
     }
     }
 
