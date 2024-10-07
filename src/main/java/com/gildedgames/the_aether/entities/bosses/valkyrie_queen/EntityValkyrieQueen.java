@@ -2,9 +2,8 @@ package com.gildedgames.the_aether.entities.bosses.valkyrie_queen;
 
 import java.util.List;
 
-import com.gildedgames.the_aether.AetherConfig;
-
 import com.gildedgames.the_aether.Aether;
+import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.entities.util.EntityBossMob;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
