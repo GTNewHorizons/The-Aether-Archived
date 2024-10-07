@@ -665,7 +665,7 @@ public class EntitySunSpirit extends EntityFlying implements IMob, IAetherBoss, 
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.sun_spirit.name");
     }
     else {
-        return this.StatCollector.translateToLocal("title.aether_legacy.sun_spirit.name");
+        return StatCollector.translateToLocal("title.aether_legacy.sun_spirit.name");
     }
     }
 
