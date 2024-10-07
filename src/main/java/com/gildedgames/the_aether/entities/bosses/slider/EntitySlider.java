@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.gildedgames.the_aether.Aether;
+import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.api.player.util.IAetherBoss;
 import com.gildedgames.the_aether.entities.util.AetherNameGen;
 import com.gildedgames.the_aether.entities.util.EntityAetherItem;
@@ -748,7 +749,12 @@ public class EntitySlider extends EntityFlying implements IAetherBoss {
 
     @Override
     public String getBossName() {
+       if (AetherConfig.config.get("Misc", "Enables randomly generated boss names", true).getBoolean()) {
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.slider.name");
+    }
+    else {
+        return this.StatCollector.translateToLocal("title.aether_legacy.slider.name");
+    }
     }
 
     @Override
