@@ -167,14 +167,13 @@ public class PlayerAetherEvents {
 
 		if (!player.worldObj.isRemote && ((EntityPlayerMP) player).func_147099_x().canUnlockAchievement(achievement) && !((EntityPlayerMP) player).func_147099_x().hasAchievementUnlocked(achievement)) {
 			if (event.achievement == AchievementsAether.enter_aether) {
+				if (AetherConfig.config.get("Misc", "Gives the Player a Book of Lore upon entering the Aether for the first time", true).getBoolean()) {
 				if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsAether.lore_book))) {
-					if (AetherConfig.config.get("Misc", "Gives the Player a Book of Lore upon entering the Aether for the first time", true).getBoolean()) {
 					player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, new ItemStack(ItemsAether.lore_book)));
 					}
 				}
-
+				if (AetherConfig.config.get("Misc", "Gives the Player a Golden Parachute upon entering the Aether for the first time", true).getBoolean()) {
 				if (!player.inventory.addItemStackToInventory(new ItemStack(ItemsAether.golden_parachute))) {
-					if (AetherConfig.config.get("Misc", "Gives the Player a Golden Parachute upon entering the Aether for the first time", true).getBoolean()) {
 					player.worldObj.spawnEntityInWorld(new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, new ItemStack(ItemsAether.golden_parachute)));
 					}
 				}
