@@ -33,9 +33,15 @@ public class AetherConfig {
 
 	private static boolean aether_start;
 
+	private static boolean book_of_lore;
+
+	private static boolean golden_parachute;
+
 	private static boolean disable_eternal_day;
 
 	private static boolean toggle_music;
+
+	private static boolean boss_names;
 
 	private static int phyg_spawnrate, flyingcow_spawnrate, sheepuff_spawnrate, aerbunny_spawnrate, moa_spawnrate, aerwhale_spawnrate;
 
@@ -72,6 +78,8 @@ public class AetherConfig {
 		old_mobs = config.get("Misc", "Enable Legacy Visuals", false).getBoolean(false);
 
 		aether_start = config.get("Gameplay", "Spawns Player with Aether Portal Frame", false).getBoolean(false);
+		book_of_lore = config.get("Misc", "Gives the Player a Book of Lore upon entering the Aether for the first time", true).getBoolean(true);
+		book_of_lore = config.get("Misc", "Gives the Player a Golden Parachute upon entering the Aether for the first time", true).getBoolean(true);
 
 		max_life_shards = config.get("Gameplay", "Max Life Shards", 10).getInt(10);
 
@@ -91,6 +99,8 @@ public class AetherConfig {
 		disable_eternal_day = config.get("Misc", "Disables eternal day making time cycle in the Aether without having to kill the Sun Spirit. This is mainly intended for use in modpacks.", false).getBoolean(false);
 
 		toggle_music = config.get("Misc", "Toggles the music in the Aether. Disable this if you use another mod that adds custom music (like MusicChoices)", true).getBoolean(true);
+
+		boss_names = config.get("Misc", "Enables randomly generated boss names", true).getBoolean(true);
 
 		//Spawnrates
 		phyg_spawnrate = config.get("Spawnrates", "Phyg Spawnrate. 1 is always, higher numbers decrease chances.", 1).getInt(1);

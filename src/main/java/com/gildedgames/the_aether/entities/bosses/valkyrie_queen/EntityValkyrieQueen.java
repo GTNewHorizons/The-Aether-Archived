@@ -3,6 +3,7 @@ package com.gildedgames.the_aether.entities.bosses.valkyrie_queen;
 import java.util.List;
 
 import com.gildedgames.the_aether.Aether;
+import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.entities.util.EntityBossMob;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -593,7 +594,12 @@ public class EntityValkyrieQueen extends EntityBossMob implements IAetherBoss {
 
     @Override
     public String getBossName() {
+    if (AetherConfig.config.get("Misc", "Enables randomly generated boss names", true).getBoolean()) {
         return this.dataWatcher.getWatchableObjectString(19) + ", " + StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
+    }
+    else {
+        return StatCollector.translateToLocal("title.aether_legacy.valkyrie_queen.name");
+    }
     }
 
     public void setBossName(String name) {
