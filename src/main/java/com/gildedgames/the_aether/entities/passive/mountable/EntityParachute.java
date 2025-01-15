@@ -62,6 +62,12 @@ public class EntityParachute extends Entity implements IEntityAdditionalSpawnDat
             return;
         }
 
+        if (this.posY < 0) {
+            this.setDead();
+
+            return;
+        }
+
         if (this.ridingPlayer != null) {
             if (this.ridingPlayer.motionY < -0.25F) {
                 this.ridingPlayer.motionY = -0.25F;

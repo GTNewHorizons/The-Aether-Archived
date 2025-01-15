@@ -204,7 +204,7 @@ public class PlayerAether implements IPlayerAether {
 		this.getEntity().worldObj.theProfiler.startSection("portal");
 
 		if (this.getEntity().dimension == AetherConfig.getAetherDimensionID()) {
-			if (this.getEntity().posY < -2) {
+			if (this.getEntity().posY < -12) {
 				this.teleportPlayer(false);
 
 				if (this.riddenEntity != null)

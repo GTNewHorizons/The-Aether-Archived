@@ -2,12 +2,18 @@ package com.gildedgames.the_aether.entities.passive.mountable;
 
 import com.gildedgames.the_aether.AetherConfig;
 import com.gildedgames.the_aether.entities.passive.EntityAetherAnimal;
+import com.gildedgames.the_aether.items.ItemsAether;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -35,6 +41,9 @@ public class EntityAerbunny extends EntityAetherAnimal implements IEntityAdditio
         this.ignoreFrustumCheck = true;
 
         this.setSize(0.4F, 0.4F);
+        this.tasks.addTask(3, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(3, new EntityAITempt(this, 0.25D, ItemsAether.blueberry, false));
+        this.tasks.addTask(4, (EntityAIBase)new EntityAIFollowParent((EntityAnimal)this, 0.25));
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIWander(this, 2D));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 10.0F));
@@ -195,7 +204,7 @@ public class EntityAerbunny extends EntityAetherAnimal implements IEntityAdditio
     public boolean interact(EntityPlayer entityplayer) {
         ItemStack itemstack = entityplayer.inventory.getCurrentItem();
 
-        if (itemstack != null && (itemstack.getItem() == Items.name_tag)) {
+        if (itemstack != null && ((itemstack.getItem() == Items.name_tag) || (itemstack.getItem() == ItemsAether.blueberry))) {
             return super.interact(entityplayer);
         } else {
             this.worldObj.playSound(this.posX, this.posY, this.posZ, "aether_legacy:aemob.aerbunny.lift", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F, false);
@@ -236,8 +245,16 @@ public class EntityAerbunny extends EntityAetherAnimal implements IEntityAdditio
     }
 
     @Override
-    public EntityAgeable createChild(EntityAgeable entityageable) {
-        return new EntityAerbunny(this.worldObj);
+    public EntityAerbunny createChild(EntityAgeable p_90011_1_)
+    {
+        EntityAerbunny entityaerbunny = new EntityAerbunny(this.worldObj);
+
+        return entityaerbunny;
+    }
+
+    public boolean isBreedingItem(ItemStack p_70877_1_)
+    {
+        return p_70877_1_ != null && p_70877_1_.getItem() == ItemsAether.blueberry;
     }
 
     @Override
