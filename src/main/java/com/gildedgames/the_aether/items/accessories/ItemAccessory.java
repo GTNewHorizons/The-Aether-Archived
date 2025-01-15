@@ -72,25 +72,24 @@ public class ItemAccessory extends Item {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public static ItemStack dispenseAccessory(IBlockSource blockSource, ItemStack stack) {
 		EnumFacing enumfacing = BlockDispenser.func_149937_b(blockSource.getBlockMetadata());
 		int i = blockSource.getXInt() + enumfacing.getFrontOffsetX();
 		int j = blockSource.getYInt() + enumfacing.getFrontOffsetY();
 		int k = blockSource.getZInt() + enumfacing.getFrontOffsetZ();
 		AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox((double) i, (double) j, (double) k, (double) (i + 1), (double) (j + 1), (double) (k + 1));
-		List<EntityLivingBase> list = blockSource.getWorld().getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
+		List<EntityPlayer> list = blockSource.getWorld().getEntitiesWithinAABB(EntityPlayer.class, axisalignedbb);
 
 		if (list.isEmpty()) {
 			return null;
 		}
 
-		EntityPlayer player = (EntityPlayer) list.get(0);
+		EntityPlayer player = list.get(0);
 
 		ItemStack itemstack = stack.copy();
 		itemstack.stackSize = 1;
 
-		PlayerAether playerAether = PlayerAether.get((EntityPlayer) player);
+		PlayerAether playerAether = PlayerAether.get(player);
 
 		if (!playerAether.getAccessoryInventory().setAccessorySlot(itemstack)) {
 			return null;
